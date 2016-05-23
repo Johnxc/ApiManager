@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class HttpHeader extends Model
 {
     //
-    protected $table = 'httpHeader';
+    protected $table = 'http_header';
 }

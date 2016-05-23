@@ -7,8 +7,32 @@
         <li @if($breadcrumb == '接口管理')class="active"@endif>
             <a href="{{ route('admin::admin.home')}}">
                 <i class="icon-dashboard"></i>
-                <span class="menu-text"> 接口管理 </span>
+                <span class="menu-text"> Home </span>
             </a>
+        </li>
+        <li class="active open">
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-desktop"></i>
+                <span class="menu-text"> 接口管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{ route('admin::admin.home')}}">
+                        <i class="icon-double-angle-right"></i>
+                        接口管理
+                    </a>
+                </li>
+
+                <li>
+                    <a href="buttons.html">
+                        <i class="icon-double-angle-right"></i>
+                        添加接口
+                    </a>
+                </li>
+            </ul>
         </li>
         <li @if($breadcrumb == '用户管理')class="active"@endif>
             <a href="{{ route('admin::admin.user.index')}}">

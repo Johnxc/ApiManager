@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ErrorCode extends Model
+class UserGroup extends Model
 {
     //
-    protected $table = 'error_code';
+    protected $table = 'user_group';
 }

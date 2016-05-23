@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50617
+Source Server Version : 50709
 Source Host           : localhost:3306
 Source Database       : apimanager
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2016-05-19 22:37:15
+Date: 2016-05-23 18:41:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,18 +46,30 @@ CREATE TABLE `api` (
 -- ----------------------------
 DROP TABLE IF EXISTS `api_category`;
 CREATE TABLE `api_category` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_code` int(11) DEFAULT NULL,
   `category_name` varchar(255) DEFAULT NULL,
+  `p_category_code` int(11) DEFAULT NULL,
   `create_uid` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of api_category
 -- ----------------------------
+INSERT INTO `api_category` VALUES ('1', '1001', '电销系统接口', '0', '1', null, null);
+INSERT INTO `api_category` VALUES ('2', '1002', '审批系统接口', '0', '1', null, null);
+INSERT INTO `api_category` VALUES ('3', '1003', 'APP接口', '0', '1', null, null);
+INSERT INTO `api_category` VALUES ('4', '1001001', '线索', '1001', '1', null, null);
+INSERT INTO `api_category` VALUES ('5', '1001002', '黑名单', '1001', '1', null, null);
+INSERT INTO `api_category` VALUES ('6', '1002001', '保理', '1002', '1', null, null);
+INSERT INTO `api_category` VALUES ('7', '1002002', '评分卡', '1002', '1', null, null);
+INSERT INTO `api_category` VALUES ('8', '1003001', '授信', '1003', '1', null, null);
+INSERT INTO `api_category` VALUES ('9', '1003002', '申请', '1004', '1', null, null);
+INSERT INTO `api_category` VALUES ('10', '1001002001', '清算黑名单', '1001002', '1', null, null);
+INSERT INTO `api_category` VALUES ('11', '1001002002', '审批黑名单', '1001002', '1', null, null);
 
 -- ----------------------------
 -- Table structure for error_code
@@ -118,18 +130,19 @@ CREATE TABLE `http_header` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) DEFAULT NULL,
   `user_password` varchar(255) DEFAULT NULL,
   `user_auth_api_list` text,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', 'xuechao', '123456', null, null, null);
 
 -- ----------------------------
 -- Table structure for user_group

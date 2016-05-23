@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,14 @@
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin','as' => 'admin::'],function(){
 	Route::get('',['as' => 'admin.home','uses' => 'AdminIndexController@index']);
+
+	Route::get('/apiCategory','ApiCategoryController@getApiCategory');
+
+	Route::get('/createApi',['as' => 'admin.createApi','uses' => 'ApiController@create']);
+	Route::get('/editApi',['as' => 'admin.editApi','uses' => 'ApiController@edit']);
+	Route::get('/disableApi',['as' => 'admin.disableApi','uses' => 'ApiController@destroy']);
+	Route::get('/api/{id}',['as' => 'admin.disableApi','uses' => 'ApiController@show']);
+
 	Route::resource('/user','UserIndexController');
 	Route::resource('/fields','FieldsController');
 	Route::resource('/errorCodes','ErrorCodesController');
