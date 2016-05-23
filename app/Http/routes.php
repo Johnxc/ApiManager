@@ -37,12 +37,13 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin','namespace' => 'Admin','as' => 'admin::'],function(){
 	Route::get('',['as' => 'admin.home','uses' => 'AdminIndexController@index']);
 
-	Route::get('/apiCategory','ApiCategoryController@getApiCategory');
+	Route::get('/apiManager',['as' => 'admin.apiManager','uses' => 'ApiCategoryController@index']); //后台首页
+	Route::get('/apiCategory','ApiCategoryController@getApiCategory'); //ajax
 
-	Route::get('/createApi',['as' => 'admin.createApi','uses' => 'ApiController@create']);
-	Route::get('/editApi',['as' => 'admin.editApi','uses' => 'ApiController@edit']);
-	Route::get('/disableApi',['as' => 'admin.disableApi','uses' => 'ApiController@destroy']);
-	Route::get('/api/{id}',['as' => 'admin.disableApi','uses' => 'ApiController@show']);
+	Route::get('/createApi',['as' => 'admin.createApi','uses' => 'ApiController@create']); //新建接口
+	Route::get('/editApi',['as' => 'admin.editApi','uses' => 'ApiController@edit']); //修改接口
+	Route::get('/deleteApi',['as' => 'admin.deleteApi','uses' => 'ApiController@destroy']); //删除接口
+	Route::get('/api/{id}',['as' => 'admin.disableApi','uses' => 'ApiController@show']); //查看接口
 
 	Route::resource('/user','UserIndexController');
 	Route::resource('/fields','FieldsController');

@@ -18,7 +18,8 @@ class ApiController extends Controller
     }
 
     public function create(){
-
+        $breadcrumb = '新建接口';
+        return view('admin/createApi',compact('breadcrumb'));
     }
 
     public function edit(){

@@ -16,7 +16,8 @@ class ApiCategoryController extends Controller
     }
 
     public function index(){
-
+		$breadcrumb = '接口管理';
+		return view('admin/apiManager',compact('breadcrumb'));
     }
 
     public function show(){

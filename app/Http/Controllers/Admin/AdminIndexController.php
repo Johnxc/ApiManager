@@ -18,13 +18,7 @@ class AdminIndexController extends Controller
     //
     public function index()
     {
-    	# code...
-    	$name = 'xuechao';
-        $breadcrumb = '接口管理';
-
-        $categoryList = ApiCategory::all();
-        
-
-    	return view('admin/home',compact('name','breadcrumb','categoryList'));
+        $breadcrumb = '首页';
+    	return view('admin/home',compact('breadcrumb'));
     }
 }

@@ -4,32 +4,33 @@
     </script>
 
     <ul class="nav nav-list">
-        <li @if($breadcrumb == '接口管理')class="active"@endif>
+        <li @if($breadcrumb == '首页')class="active"@endif>
             <a href="{{ route('admin::admin.home')}}">
                 <i class="icon-dashboard"></i>
                 <span class="menu-text"> Home </span>
             </a>
+            <b class="arrow"></b>
         </li>
-        <li class="active open">
+        <li @if($breadcrumb == '接口管理' || $breadcrumb == '新建接口')class="active open"@endif>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text"> 接口管理 </span>
 
-                <b class="arrow icon-angle-down"></b>
+                <b class="arrow fa fa-angle-down"></b>
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="{{ route('admin::admin.home')}}">
+                <li @if($breadcrumb == '接口管理')class="active"@endif>
+                    <a href="{{ route('admin::admin.apiManager') }}">
                         <i class="icon-double-angle-right"></i>
                         接口管理
                     </a>
                 </li>
 
-                <li>
-                    <a href="buttons.html">
+                <li @if($breadcrumb == '新建接口')class="active"@endif>
+                    <a href="{{ route('admin::admin.createApi') }}">
                         <i class="icon-double-angle-right"></i>
-                        添加接口
+                        新建接口
                     </a>
                 </li>
             </ul>
@@ -60,8 +61,8 @@
         </li>
     </ul><!-- /.nav-list -->
 
-    <div class="sidebar-collapse" id="sidebar-collapse">
-        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
     </div>
 
     <script type="text/javascript">
