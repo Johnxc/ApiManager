@@ -59,7 +59,7 @@
         <div class="navbar-header pull-left">
             <a href="index.html" class="navbar-brand">
                 <small>
-                    <i class="fa fa-leaf"></i>
+                    <i class="fa fa-blind" aria-hidden="true"></i>
                     Api Manager
                 </small>
             </a>
@@ -72,7 +72,7 @@
                         <img class="nav-user-photo" src="{{ asset('assets/avatars/user.jpg') }}" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									Chason
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
