@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Field;
 
 class FieldsController extends Controller
 {
@@ -20,6 +21,9 @@ class FieldsController extends Controller
     	# code...
     	$name = 'xuechao';
         $breadcrumb = '数据字典';
-    	return view('admin/fields',compact('name','breadcrumb'));
+        $fieldModel = new Field();
+        $gridData = $fieldModel->all();
+        $result = json_encode($gridData);
+    	return view('admin/fields',compact('name','breadcrumb','gridData'));
     }
 }

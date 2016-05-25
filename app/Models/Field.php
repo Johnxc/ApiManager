@@ -8,4 +8,6 @@ class Field extends Model
 {
     //
     protected $table = 'field';
+
+    protected $connection = 'mysql';
 }

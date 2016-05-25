@@ -15,9 +15,6 @@
     <!-- text fonts -->
     <link rel="stylesheet" href="{{ asset('assets/fonts/fonts.googleapis.com.css') }}" />
 
-    <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
-
     <!--[if lte IE 9]>
     <link rel="stylesheet" href="{{ asset('assets/css/ace-part2.min.css') }}" class="ace-main-stylesheet" />
     <![endif]-->
@@ -27,6 +24,13 @@
     <![endif]-->
 
     <!-- inline styles related to this page -->
+
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/ui.jqgrid.min.css') }}" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
     <!-- ace settings handler -->
     <script src="{{ asset('assets/js/ace-extra.min.js') }}"></script>
@@ -292,5 +296,10 @@
 
 {{--logic--}}
 <script src="{{ asset('assets/js/logic/apiManager.js') }}"></script>
+
+<script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.jqGrid.min.js') }}"></script>
+<script src="{{ asset('assets/js/grid.locale-en.js') }}"></script>
+<script src="{{ asset('assets/js/logic/fields.js') }}"></script>
 </body>
 </html>
