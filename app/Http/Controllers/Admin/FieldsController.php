@@ -18,12 +18,24 @@ class FieldsController extends Controller
 
     public function index()
     {
-    	# code...
     	$name = 'xuechao';
         $breadcrumb = '数据字典';
         $fieldModel = new Field();
-        $gridData = $fieldModel->all();
-        $result = json_encode($gridData);
-    	return view('admin/fields',compact('name','breadcrumb','gridData'));
+    	return view('admin/fields',compact('name','breadcrumb'));
+    }
+
+    public function getFieldList(Request $request){
+        $rows = $request->get('rows');
+        $page = $request->get('page');
+        $sortField = $request->get('sidx') ? $request->get('sidx') : 'id';
+
+        $gridData = array();
+        $fieldModel = new Field();
+        $fieldModelAll = $fieldModel->all();
+        $gridData['rows'] = $fieldModel->orderBy($sortField,$request->get('sord'))->take($rows)->offset( ($request->get('page') - 1) * $rows )->get();
+        $gridData['page'] = $request->get('page');
+        $gridData['total'] = ceil( $fieldModelAll->count() / $rows );
+        $gridData['records'] = $fieldModelAll->count();
+        return response()->json($gridData);
     }
 }

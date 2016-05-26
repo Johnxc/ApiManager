@@ -6,14 +6,14 @@
     <ul class="nav nav-list">
         <li @if($breadcrumb == '首页')class="active"@endif>
             <a href="{{ route('admin::admin.home')}}">
-                <i class="icon-dashboard"></i>
+                <i class="menu-icon fa fa-home" aria-hidden="true"></i>
                 <span class="menu-text"> Home </span>
             </a>
             <b class="arrow"></b>
         </li>
         <li @if($breadcrumb == '接口管理' || $breadcrumb == '新建接口')class="active open"@endif>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-desktop"></i>
+                <i class="menu-icon fa fa-bars" aria-hidden="true"></i>
                 <span class="menu-text"> 接口管理 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -21,14 +21,14 @@
             <ul class="submenu">
                 <li @if($breadcrumb == '接口管理')class="active"@endif>
                     <a href="{{ route('admin::admin.apiManager') }}">
-                        <i class="icon-double-angle-right"></i>
+                        <i class="menu-icon fa fa-caret-right" aria-hidden="true"></i>
                         接口管理
                     </a>
                 </li>
 
                 <li @if($breadcrumb == '新建接口')class="active"@endif>
                     <a href="{{ route('admin::admin.createApi') }}">
-                        <i class="icon-double-angle-right"></i>
+                        <i class="menu-icon fa fa-caret-right" aria-hidden="true"></i>
                         新建接口
                     </a>
                 </li>
@@ -36,25 +36,25 @@
         </li>
         <li @if($breadcrumb == '用户管理')class="active"@endif>
             <a href="{{ route('admin::admin.user.index')}}">
-                <i class="icon-text-width"></i>
+                <i class="menu-icon fa fa-user" aria-hidden="true"></i>
                 <span class="menu-text"> 用户管理 </span>
             </a>
         </li>
         <li @if($breadcrumb == '数据字典')class="active"@endif>
             <a href="{{ route('admin::admin.fields.index')}}">
-                <i class="icon-text-width"></i>
+                <i class="menu-icon fa fa-database" aria-hidden="true"></i>
                 <span class="menu-text"> 数据字典 </span>
             </a>
         </li>
         <li @if($breadcrumb == '错误码')class="active"@endif>
             <a href="{{ route('admin::admin.errorCodes.index')}}">
-                <i class="icon-text-width"></i>
+                <i class="menu-icon fa fa-code" aria-hidden="true"></i>
                 <span class="menu-text"> 错误码 </span>
             </a>
         </li>
         <li @if($breadcrumb == 'HTTP Header')class="active"@endif>
             <a href="{{ route('admin::admin.httpHeader.index')}}">
-                <i class="icon-text-width"></i>
+                <i class="menu-icon fa fa-header" aria-hidden="true"></i>
                 <span class="menu-text"> HTTP Header </span>
             </a>
         </li>

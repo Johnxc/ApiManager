@@ -1,6 +1,6 @@
 jQuery(function($) {
-    var grid_selector = "#grid-table";
-    var pager_selector = "#grid-pager";
+    var grid_selector = "#httpHeaderGrid";
+    var pager_selector = "#httpHeaderGrid-pager";
 
     //resize to fit page size
     $(window).on('resize.jqGrid', function () {
@@ -37,10 +37,10 @@ jQuery(function($) {
 
 
     jQuery(grid_selector).jqGrid({
-        url: "fieldList",
+        url: "httpHeaderList",
         datatype: "json",
         height: 580,
-        colNames:[' ', 'ID','Name','Type', 'Default', 'Desc','UpdatedAt'],
+        colNames:[' ', 'ID','Key','Value', 'CreatedBy'],
         colModel:[
             {name:'myac',index:'', width:80, fixed:true, sortable:false, resize:false,
                 formatter:'actions',
@@ -52,12 +52,10 @@ jQuery(function($) {
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                 }
             },
-            {name:'id',index:'id', width:60, sorttype:"int", editable: false},
-            {name:'field_code',index:'field_code',width:110, editable:true},
-            {name:'field_type',index:'field_type', width:70,editable: true,edittype:"select",editoptions:{value:"int:int;varchar:varchar;long:long;datetime:datetime;bigint:bigint"}},
-            {name:'field_default',index:'field_default', width:70, editable: true},
-            {name:'field_desc',index:'field_desc', editable: true,edittype:"textarea", editoptions:{rows:"1",cols:"20"}},
-            {name:'updated_at',index:'updated_at', width:150, sortable:true,editable: false}
+            {name:'id',index:'id', width:20, sorttype:"int", editable: false},
+            {name:'header_name',index:'header_name',width:110, editable:true},
+            {name:'header_value',index:'header_value', width:130,editable:true},
+            {name:'created_by',index:'created_by', width:110, editable: false}
         ],
 
         viewrecords : true,

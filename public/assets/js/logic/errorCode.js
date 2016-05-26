@@ -1,6 +1,6 @@
 jQuery(function($) {
-    var grid_selector = "#grid-table";
-    var pager_selector = "#grid-pager";
+    var grid_selector = "#errorCodeGrid";
+    var pager_selector = "#errorCodeGrid-pager";
 
     //resize to fit page size
     $(window).on('resize.jqGrid', function () {
@@ -37,10 +37,10 @@ jQuery(function($) {
 
 
     jQuery(grid_selector).jqGrid({
-        url: "fieldList",
+        url: "errorCodeList",
         datatype: "json",
         height: 580,
-        colNames:[' ', 'ID','Name','Type', 'Default', 'Desc','UpdatedAt'],
+        colNames:[' ', 'ID','Code','Desc', 'CreatedBy'],
         colModel:[
             {name:'myac',index:'', width:80, fixed:true, sortable:false, resize:false,
                 formatter:'actions',
@@ -52,12 +52,10 @@ jQuery(function($) {
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                 }
             },
-            {name:'id',index:'id', width:60, sorttype:"int", editable: false},
-            {name:'field_code',index:'field_code',width:110, editable:true},
-            {name:'field_type',index:'field_type', width:70,editable: true,edittype:"select",editoptions:{value:"int:int;varchar:varchar;long:long;datetime:datetime;bigint:bigint"}},
-            {name:'field_default',index:'field_default', width:70, editable: true},
-            {name:'field_desc',index:'field_desc', editable: true,edittype:"textarea", editoptions:{rows:"1",cols:"20"}},
-            {name:'updated_at',index:'updated_at', width:150, sortable:true,editable: false}
+            {name:'id',index:'id', width:20, sorttype:"int", editable: false},
+            {name:'error_code',index:'error_code',width:110, editable:true},
+            {name:'error_desc',index:'error_desc', width:70,editable: true,edittype:"select",editoptions:{value:"1:admin;2:dev;3:guest"}},
+            {name:'created_by',index:'created_by', width:110, editable: false}
         ],
 
         viewrecords : true,

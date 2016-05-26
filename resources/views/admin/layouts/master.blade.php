@@ -128,7 +128,7 @@
 
                 <ul class="breadcrumb">
                     <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <i class="fa fa-home" aria-hidden="true"></i>
                         <a href="{{ route('admin::admin.home') }}">Home</a>
                     </li>
                     <li class="active">{{ $breadcrumb }}</li>
@@ -223,7 +223,7 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="bigger-120">
-							Application &copy; 2013-2016
+							Api Manager &copy; 2013-2016
 						</span>
 
                 &nbsp; &nbsp;
@@ -301,5 +301,8 @@
 <script src="{{ asset('assets/js/jquery.jqGrid.min.js') }}"></script>
 <script src="{{ asset('assets/js/grid.locale-en.js') }}"></script>
 <script src="{{ asset('assets/js/logic/fields.js') }}"></script>
+<script src="{{ asset('assets/js/logic/user.js') }}"></script>
+<script src="{{ asset('assets/js/logic/errorCode.js') }}"></script>
+<script src="{{ asset('assets/js/logic/httpHeader.js') }}"></script>
 </body>
 </html>
