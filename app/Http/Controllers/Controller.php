@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function changeOp($op){
+        $resultOp = '=';
+        switch ($op){
+            case 'eq':
+                break;
+        }
+        return $resultOp;
+    }
 }

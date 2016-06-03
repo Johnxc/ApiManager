@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Field;
 
-class FieldsController extends Controller
+class FieldsController extends SimpleController
 {
     //
     public function __construct()
@@ -25,17 +25,25 @@ class FieldsController extends Controller
     }
 
     public function getFieldList(Request $request){
-        $rows = $request->get('rows');
-        $page = $request->get('page');
-        $sortField = $request->get('sidx') ? $request->get('sidx') : 'id';
+        return parent::getList($request,new Field());
+    }
 
-        $gridData = array();
-        $fieldModel = new Field();
-        $fieldModelAll = $fieldModel->all();
-        $gridData['rows'] = $fieldModel->orderBy($sortField,$request->get('sord'))->take($rows)->offset( ($request->get('page') - 1) * $rows )->get();
-        $gridData['page'] = $request->get('page');
-        $gridData['total'] = ceil( $fieldModelAll->count() / $rows );
-        $gridData['records'] = $fieldModelAll->count();
-        return response()->json($gridData);
+    public function saveField(Request $request){
+        if($request->get('oper') == 'del'){
+            $fieldModel = Field::find($request->get('id'));
+            $fieldModel->delete();
+        }else{
+            if($request->get('id') == '_empty'){
+                $fieldModel = new Field();
+            }else{
+                $fieldModel = Field::find($request->get('id'));
+            }
+            $fieldModel->field_code = $request->get('field_code');
+            $fieldModel->field_type = $request->get('field_type');
+            $fieldModel->field_default = $request->get('field_default');
+            $fieldModel->field_desc = $request->get('field_desc');
+            $fieldModel->save();
+            return response()->json($fieldModel);
+        }
     }
 }

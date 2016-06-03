@@ -82,7 +82,7 @@ jQuery(function($) {
             }, 0);
         },
 
-        editurl: "/dummy.html",//nothing is saved
+        editurl: "saveField",//nothing is saved
         caption: "数据字典"
 
         //,autowidth: true,

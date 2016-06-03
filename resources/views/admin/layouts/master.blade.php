@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/datepicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/ui.jqgrid.min.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets/css/easyui/easyui.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/easyui/icon.css') }}" />
+
     <!-- ace styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
@@ -304,5 +307,6 @@
 <script src="{{ asset('assets/js/logic/user.js') }}"></script>
 <script src="{{ asset('assets/js/logic/errorCode.js') }}"></script>
 <script src="{{ asset('assets/js/logic/httpHeader.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.easyui.min.js') }}"></script>
 </body>
 </html>

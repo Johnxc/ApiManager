@@ -54,7 +54,7 @@ jQuery(function($) {
             },
             {name:'id',index:'id', width:20, sorttype:"int", editable: false},
             {name:'error_code',index:'error_code',width:110, editable:true},
-            {name:'error_desc',index:'error_desc', width:70,editable: true,edittype:"select",editoptions:{value:"1:admin;2:dev;3:guest"}},
+            {name:'error_desc',index:'error_desc', width:70,editable: true},
             {name:'created_by',index:'created_by', width:110, editable: false}
         ],
 
@@ -80,8 +80,8 @@ jQuery(function($) {
             }, 0);
         },
 
-        editurl: "/dummy.html",//nothing is saved
-        caption: "数据字典"
+        editurl: "saveErrorCode",//nothing is saved
+        caption: "Error Codes"
 
         //,autowidth: true,
 

@@ -81,7 +81,7 @@ jQuery(function($) {
         },
 
         editurl: "/dummy.html",//nothing is saved
-        caption: "数据字典"
+        caption: "用户管理"
 
         //,autowidth: true,
 

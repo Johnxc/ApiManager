@@ -39,10 +39,17 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','as' => 'admin::'],func
 
 	Route::get('/apiManager',['as' => 'admin.apiManager','uses' => 'ApiCategoryController@index']); //后台首页
 	Route::get('/apiCategory','ApiCategoryController@getApiCategory'); //ajax
+
 	Route::get('/fieldList','FieldsController@getFieldList'); //ajax
+	Route::post('/saveField','FieldsController@saveField'); //ajax
+
 	Route::get('/userList','UserIndexController@getUserList'); //ajax
+
 	Route::get('/errorCodeList','ErrorCodesController@getErrorCodeList'); //ajax
+	Route::post('/saveErrorCode','ErrorCodesController@saveField'); //ajax
+
 	Route::get('/httpHeaderList','HttpHeaderController@getHttpHeaderList'); //ajax
+	Route::post('/saveHttpHeader','HttpHeaderController@saveField'); //ajax
 
 	Route::get('/createApi',['as' => 'admin.createApi','uses' => 'ApiController@create']); //新建接口
 	Route::get('/editApi',['as' => 'admin.editApi','uses' => 'ApiController@edit']); //修改接口

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\ErrorCode;
 
-class ErrorCodesController extends Controller
+class ErrorCodesController extends SimpleController
 {
     //
     public function __construct()
@@ -26,18 +26,24 @@ class ErrorCodesController extends Controller
     }
 
     public function getErrorCodeList(Request $request){
-        $rows = $request->get('rows');
-        $page = $request->get('page');
-        $sortField = $request->get('sidx') ? $request->get('sidx') : 'id';
+        return parent::getList($request,new ErrorCode());
+    }
 
-        $gridData = array();
-        $errorCodeModel = new ErrorCode();
-        $errorCodeModelAll = $errorCodeModel->all();
-        $gridData['rows'] = $errorCodeModel->orderBy($sortField,$request->get('sord'))->take($rows)->offset( ($request->get('page') - 1) * $rows )->get();
-        $gridData['page'] = $request->get('page');
-        $gridData['total'] = ceil( $errorCodeModelAll->count() / $rows );
-        $gridData['records'] = $errorCodeModelAll->count();
-        return response()->json($gridData);
+    public function saveField(Request $request){
+        if($request->get('oper') == 'del'){
+            $errorCode = ErrorCode::find($request->get('id'));
+            $errorCode->delete();
+        }else{
+            if($request->get('id') == '_empty'){
+                $errorCode = new ErrorCode();
+            }else{
+                $errorCode = ErrorCode::find($request->get('id'));
+            }
+            $errorCode->error_code = $request->get('error_code');
+            $errorCode->error_desc = $request->get('error_desc');
+            $errorCode->save();
+            return response()->json($errorCode);
+        }
     }
 }
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\HttpHeader;
 
-class HttpHeaderController extends Controller
+class HttpHeaderController  extends SimpleController
 {
     //
     public function __construct()
@@ -26,17 +26,23 @@ class HttpHeaderController extends Controller
     }
 
     public function getHttpHeaderList(Request $request){
-        $rows = $request->get('rows');
-        $page = $request->get('page');
-        $sortField = $request->get('sidx') ? $request->get('sidx') : 'id';
+        return parent::getList($request,new HttpHeader());
+    }
 
-        $gridData = array();
-        $httpHeaderModel = new HttpHeader();
-        $httpHeaderModelAll = $httpHeaderModel->all();
-        $gridData['rows'] = $httpHeaderModel->orderBy($sortField,$request->get('sord'))->take($rows)->offset( ($request->get('page') - 1) * $rows )->get();
-        $gridData['page'] = $request->get('page');
-        $gridData['total'] = ceil( $httpHeaderModelAll->count() / $rows );
-        $gridData['records'] = $httpHeaderModelAll->count();
-        return response()->json($gridData);
+    public function saveField(Request $request){
+        if($request->get('oper') == 'del'){
+            $httpHeader = HttpHeader::find($request->get('id'));
+            $httpHeader->delete();
+        }else{
+            if($request->get('id') == '_empty'){
+                $httpHeader = new HttpHeader();
+            }else{
+                $httpHeader = HttpHeader::find($request->get('id'));
+            }
+            $httpHeader->header_name = $request->get('header_name');
+            $httpHeader->header_value = $request->get('header_value');
+            $httpHeader->save();
+            return response()->json($httpHeader);
+        }
     }
 }

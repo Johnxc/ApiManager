@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 
-class UserIndexController extends Controller
+class UserIndexController extends SimpleController
 {
     //
     public function __construct()
@@ -26,17 +26,6 @@ class UserIndexController extends Controller
     }
 
     public function getUserList(Request $request){
-        $rows = $request->get('rows');
-        $page = $request->get('page');
-        $sortField = $request->get('sidx') ? $request->get('sidx') : 'id';
-
-        $gridData = array();
-        $userModel = new User();
-        $userModelAll = $userModel->all();
-        $gridData['rows'] = $userModel->orderBy($sortField,$request->get('sord'))->take($rows)->offset( ($request->get('page') - 1) * $rows )->get();
-        $gridData['page'] = $request->get('page');
-        $gridData['total'] = ceil( $userModelAll->count() / $rows );
-        $gridData['records'] = $userModelAll->count();
-        return response()->json($gridData);
+        return parent::getList($request,new User());
     }
 }

@@ -25,8 +25,9 @@ class ApiCategoryController extends Controller
     }
 
     public function getApiCategory(Request $request){
-		$response = $this->generateCategoryTree(new ApiCategory(),'0');
-    	return response()->json($response);
+		$treeDataSource = array('id'=>'-1','text'=>'接口树','children'=>array());
+		$treeDataSource['children'] = $this->generateCategoryTree(new ApiCategory(),'0');
+    	return response()->json($treeDataSource);
     }
 
 	private function generateCategoryTree($apiCategory , $pCategoryCode){
@@ -36,10 +37,10 @@ class ApiCategoryController extends Controller
 
 		foreach ($categoryList as $key => $category){
 			$categoryCode = $category->category_code;
-			$treeDataSource[$categoryCode]['name'] = $category->category_name;
+			$treeDataSource['id'] = $category->category_code;
 			$children = $this->generateCategoryTree($apiCategory,$categoryCode);
-			$treeDataSource[$categoryCode]['type'] = empty($children) ? 'item' : 'folder';
-			$treeDataSource[$categoryCode]['additionalParameters']['children'] = $children;
+			$treeDataSource['text'] = $category->category_name;
+			$treeDataSource['children'] = $children;
 		}
 
 		return $treeDataSource;

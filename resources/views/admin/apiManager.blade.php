@@ -22,7 +22,9 @@
 
                         <div class="widget-body">
                             <div class="widget-main padding-8">
-                                <div id="categoryTree" class="tree"></div>
+                                <div class="easyui-panel" style="padding:5px">
+                                    <ul class="easyui-tree" data-options="url:'/admin/apiCategory',method:'get',animate:true,dnd:true"></ul>
+                                </div>
                             </div>
                         </div>
                     </div>

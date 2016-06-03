@@ -80,8 +80,8 @@ jQuery(function($) {
             }, 0);
         },
 
-        editurl: "/dummy.html",//nothing is saved
-        caption: "数据字典"
+        editurl: "saveHttpHeader",//nothing is saved
+        caption: "Http Header"
 
         //,autowidth: true,
 
