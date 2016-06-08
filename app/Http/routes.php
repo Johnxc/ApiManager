@@ -37,8 +37,11 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin','namespace' => 'Admin','as' => 'admin::'],function(){
 	Route::get('',['as' => 'admin.home','uses' => 'AdminIndexController@index']);
 
+	Route::get('/saveCategory','ApiCategoryController@saveCategory'); //ajax
+
 	Route::get('/apiManager',['as' => 'admin.apiManager','uses' => 'ApiCategoryController@index']); //后台首页
 	Route::get('/apiCategory','ApiCategoryController@getApiCategory'); //ajax
+	Route::get('/getCategoryRelation','ApiCategoryController@getCategoryRelation'); //ajax
 
 	Route::get('/fieldList','FieldsController@getFieldList'); //ajax
 	Route::post('/saveField','FieldsController@saveField'); //ajax

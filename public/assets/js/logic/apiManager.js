@@ -1,26 +1,29 @@
 $(function(){
-    $.ajax({
-        type:'get',
-        url:'/admin/apiCategory',
-        dataType:'json',
-        success:function(response){
-            // var treeDataSourceR = new DataSourceTree({data: response});
-            // $('#categoryTree').ace_tree({
-            //     dataSource: treeDataSourceR
-            // });
-
-        },error:function(response){
-
+    $('#apiCategoryTree').tree({
+        dnd: true,
+        lines: true,
+        method: 'get',
+        url: 'apiCategory',
+        onClick: function (node) {
+            console.log(node);
+        },
+        onDrop: function (targetNode, source, point) {
+            var targetId = $(this).tree('getNode', targetNode).id;
+            console.log(targetId);
         }
     });
-
-    $('#categoryTree').on('selected.fu.tree', function (e, info) {
-        console.log('Select Event: ', info);
-    });
-
-    $('#categoryTree').on('loaded.fu.tree', function (e) {
-        console.log('Loaded');
-    });
+    $('#btnUpdateApiCategory').click(function () {
+        var selectedNode = $('#apiCategoryTree').tree('getSelected');
+        console.log(selectedNode);
+        $.get('/admin/getCategoryRelation?id='+selectedNode.id,function(response){
+            var currentNode = eval('('+response+')');
+            console.log(currentNode.currentText);
+            $('#currentId').val(currentNode.currentId);
+            $('#rootPath').val(currentNode.rootText);
+            $('#parentPath').val(currentNode.parentText);
+            $('#currentPath').val(currentNode.currentText);
+        });
+    })
 })
 //
 // function DataSourceTree(options,callback){
