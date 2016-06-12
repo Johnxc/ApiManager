@@ -9,7 +9,7 @@
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/4.2.0/css/font-awesome.min.css') }}" />
-
+    <link rel="stylesheet" href="{{ asset('assets/css/common.css') }}" />
     <!-- page specific plugin styles -->
 
     <!-- text fonts -->
@@ -279,7 +279,7 @@
     if('ontouchstart' in document.documentElement) document.write("<script src='{{ asset('assets/js/jquery.mobile.custom.min.js') }}'>"+"<"+"/script>");
 </script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
+<script src="{{ asset('assets/js/typeahead.jquery.min.js') }}"></script>
 <!-- page specific plugin scripts -->
 
 <!--[if lte IE 8]>

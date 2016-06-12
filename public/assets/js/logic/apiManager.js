@@ -1,4 +1,17 @@
 $(function(){
+    $(document).on("click",".fa-plus",function () {
+        addHHKeyRow($(this));
+    });
+
+    $(document).on("keydown",".groupInputBehind>input",function (event) {
+        if(event.keyCode === 9){
+            addHHKeyRow($(this));
+        }
+    });
+    $(document).on("click",".fa-minus",function () {
+        $(this).parent().parent().remove();
+    });
+
     $('#apiCategoryTree').tree({
         dnd: true,
         lines: true,
@@ -17,14 +30,36 @@ $(function(){
         console.log(selectedNode);
         $.get('/admin/getCategoryRelation?id='+selectedNode.id,function(response){
             var currentNode = eval('('+response+')');
-            console.log(currentNode.currentText);
             $('#currentId').val(currentNode.currentId);
             $('#rootPath').val(currentNode.rootText);
             $('#parentPath').val(currentNode.parentText);
+            $('#parentId').val(currentNode.parentId);
             $('#currentPath').val(currentNode.currentText);
         });
+    });
+    $('#btnAddApiCategory').click(function () {
+        var selectedNode = $('#apiCategoryTree').tree('getSelected');
+        $.get('/admin/getCategoryRelation?id='+selectedNode.id,function(response){
+            var currentNode = eval('('+response+')');
+            console.log(currentNode.currentText);
+            $('#rootPath').val(currentNode.rootText);
+            $('#parentPath').val(currentNode.parentText);
+            $('#parentId').val(currentNode.parentId);
+        });
     })
-})
+});
+
+function clickTabAddNewRow(obj,event) {
+    if(event.keyCode === 9){
+        addHHKeyRow(obj);
+    }
+}
+
+function addHHKeyRow(obj){
+    var tmp1 = $(obj).parent().parent();
+    var newRow = $(obj).parent().parent().prop("outerHTML");
+    $(obj).parent().parent().after(newRow);
+}
 //
 // function DataSourceTree(options,callback){
 //     var $data = options.data;

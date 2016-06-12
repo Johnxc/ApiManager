@@ -11,7 +11,7 @@
                     <div class="widget-box">
                         <div class="widget-header header-color-blue2">
                             <div class="col-sm-4">
-                                <h4 class="lighter smaller">Choose Categories</h4>
+                                <h4 class="lighter smaller">接口目录</h4>
                             </div>
                             <div class="btn-group col-sm-8" style="padding:5px;">
                                 <button type="button" id="btnAddApiCategory" class="btn btn-sm btn-white pull-right">添加目录</button>
@@ -35,7 +35,7 @@
                 <div class="col-sm-6">
                     <div class="widget-box">
                         <div class="widget-header header-color-blue2">
-                            <h4 class="lighter smaller">Modify Categories</h4>
+                            <h4 class="lighter smaller">修改目录</h4>
                         </div>
                         <div class="widget-body" style="padding:20px;">
                             <form action="/admin/saveCategory" role="form">
@@ -49,6 +49,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-left" for="parentPath">上级目录</label>
                                     <div class="col-sm-9">
+                                        <input type="hidden" id="parentId" name="parentId" />
                                         <input type="text" id="parentPath" placeholder="上级目录" class="col-xs-10 col-sm-5" disabled />
                                     </div>
                                 </div>

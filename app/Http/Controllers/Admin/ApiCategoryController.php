@@ -42,16 +42,29 @@ class ApiCategoryController extends Controller
 		$rootNode = strlen($id) == 4 ? $currentNode : $apiCategory->where('category_code',$rootCode)->get()->first();
 
 		$tmp1 = $currentNode->category_code;
-		return json_encode(array('currentId'=>$currentNode->category_code,'currentText'=>$currentNode->category_name,'parentText'=>$parentNode->category_name,'rootText'=>$rootNode->category_name));
+		return json_encode(array('currentId'=>$currentNode->category_code,'currentText'=>$currentNode->category_name,'parentId' => $parentNode->category_code,'parentText'=>$parentNode->category_name,'rootText'=>$rootNode->category_name));
 	}
 
 	public function saveCategory(){
-		$categoryText = $_GET['currentPath'];
-		$categoryCode = $_GET['currentId'];
-		$apiCategory = new ApiCategory();
-		$apiCategory = $apiCategory->where('category_code',$categoryCode)->get()->first();
-		$apiCategory->category_name = $categoryText;
-		$apiCategory->save();
+		if($_GET['currentPath'] && $_GET['currentId']){
+			$categoryText = $_GET['currentPath'];
+			$categoryCode = $_GET['currentId'];
+			$apiCategory = new ApiCategory();
+			$apiCategory = $apiCategory->where('category_code',$categoryCode)->get()->first();
+			$apiCategory->category_name = $categoryText;
+			$apiCategory->save();
+		}else{
+			$parentId = $_GET['parentId'];
+			$categoryText = $_GET['currentPath'];
+			$apiCategory = new ApiCategory();
+			$lastChild = $apiCategory->where('p_category_code',$parentId)->orderBy('category_code','desc')->take(1)->get()->first();
+$tmp1 = $lastChild->category_code;
+			$apiCategory->category_code = $lastChild->category_code + 1;
+			$apiCategory->category_name = $categoryText;
+			$apiCategory->p_category_code = $parentId;
+			$apiCategory->save();
+		}
+
 		$breadcrumb = '接口管理';
 		return view('admin/apiManager',compact('breadcrumb'));
 	}

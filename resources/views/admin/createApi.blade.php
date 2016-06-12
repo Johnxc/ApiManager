@@ -1,5 +1,4 @@
 @extends('admin.layouts.master')
-
 @section('admin-content')
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
@@ -9,7 +8,7 @@
 
                 <form class="form-horizontal" id="sample-form">
                     <h3 class="lighter block green">接口基本信息</h3>
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label for="apiCode" class="col-xs-12 col-sm-3 control-label no-padding-right">
                             接口编号
                         </label>
@@ -21,7 +20,7 @@
                         </div>
                         <div class="help-block col-xs-12 col-sm-reset inline"> Success tip help!</div>
                     </div>
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label for="apiName" class="col-xs-12 col-sm-3 control-label no-padding-right">
                             接口名称
                         </label>
@@ -33,7 +32,7 @@
                         </div>
                         <div class="help-block col-xs-12 col-sm-reset inline"> Success tip help!</div>
                     </div>
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label for="apiUrl" class="col-xs-12 col-sm-3 control-label no-padding-right">
                             调用地址
                         </label>
@@ -45,157 +44,68 @@
                         </div>
                         <div class="help-block col-xs-12 col-sm-reset inline"> Success tip help!</div>
                     </div>
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label for="apiDesc" class="col-xs-12 col-sm-3 control-label no-padding-right">
                             接口描述
                         </label>
                         <div class="col-xs-12 col-sm-5">
-                            <textarea id="apiDesc" rows="2" style="max-width:510px;" class="form-control"></textarea>
+                            <textarea id="apiDesc" rows="2" style="max-width:680px;resize:none;width:680px" class="form-control"></textarea>
                         </div>
                         <div class="help-block col-xs-12 col-sm-reset inline"> Success tip help!</div>
                     </div>
 
-                    <h3 class="lighter block green">Http Header</h3>
+                    <h3 class="lighter block green">请求头</h3>
                     <div class="form-group">
-                        <div class="col-sm-9 col-xs-12 col-sm-offset-3 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">&nbsp;key&nbsp;</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                                <div class="input-group-addon">value</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                            HTTP Header Key
+                        </label>
+                        <div class="input-group col-xs-12 col-sm-5 groupInputBehind">
+                            <input type="text" name="hhKey" class="width-100" />
+                            <span class="input-group-addon"></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-9 col-xs-12 col-sm-offset-3 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">&nbsp;key&nbsp;</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                                <div class="input-group-addon">value</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <div class="help-block col-xs-12 col-sm-reset inline">
+                            <i class="ace-icon fa fa-plus" style="cursor: pointer;"></i>
+                            <i class="ace-icon fa fa-minus" style="cursor: pointer;margin-left:5px"></i>
                         </div>
                     </div>
 
-                    <h3 class="lighter block green">Parameter</h3>
+                    <h3 class="lighter block green">参数列表</h3>
                     <div class="form-group">
-                        <div class="col-sm-11 col-xs-12 col-sm-offset-1 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">name</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">type</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">isNeed</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                            Parameter Name
+                        </label>
+                        <div class="input-group col-xs-12 col-sm-5 groupInputBehind">
+                            <input type="text" name="parameter" class="width-100" />
+                            <span class="input-group-addon"></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-11 col-xs-12 col-sm-offset-1 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">name</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">type</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">isNeed</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-11 col-xs-12 col-sm-offset-1 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">name</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">type</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">isNeed</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-11 col-xs-12 col-sm-offset-1 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">name</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">type</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">isNeed</div>
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <div class="help-block col-xs-12 col-sm-reset inline">
+                            <i class="ace-icon fa fa-plus" style="cursor: pointer;"></i>
+                            <i class="ace-icon fa fa-minus" style="cursor: pointer;margin-left:5px"></i>
                         </div>
                     </div>
 
-                    <h3 class="lighter block green">Return</h3>
-                    <div class="form-group has-success">
+                    <h3 class="lighter block green">返回值</h3>
+                    <div class="form-group">
                         <label for="apiReturn" class="col-xs-12 col-sm-3 control-label no-padding-left">
                             返回值
                         </label>
                         <div class="col-xs-12 col-sm-9">
-                            <textarea id="apiReturn" rows="6" style="max-width:510px;" class="form-control"></textarea>
+                            <textarea id="apiReturn" rows="6" style="max-width:680px;resize:none;height:150px;width:680px;" class="form-control"></textarea>
                         </div>
                     </div>
 
-                    <h3 class="lighter block green">Error Codes</h3>
+                    <h3 class="lighter block green">错误码</h3>
                     <div class="form-group">
-                        <div class="col-sm-9 col-xs-12 col-sm-offset-3 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">&nbsp;code&nbsp;</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <label class="col-xs-12 col-sm-3 control-label no-padding-right">
+                            HTTP Header Key
+                        </label>
+                        <div class="input-group col-xs-12 col-sm-5 groupInputBehind">
+                            <input type="text" name="hhKey" class="width-100" />
+                            <span class="input-group-addon"></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-9 col-xs-12 col-sm-offset-3 form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon">&nbsp;code&nbsp;</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                                <div class="input-group-addon">desc</div>
-                                <input type="text" class="form-control" placeholder="this input will be autoload">
-                            </div>
-                            <div class="input-group fc-button-group">
-                                <input class="btn btn-sm btn-white" type="button" value="Add">
-                                <input class="btn btn-sm btn-white" type="button" value="Del">
-                            </div>
+                        <div class="help-block col-xs-12 col-sm-reset inline">
+                            <i class="ace-icon fa fa-plus" style="cursor: pointer;"></i>
+                            <i class="ace-icon fa fa-minus" style="cursor: pointer;margin-left:5px"></i>
                         </div>
                     </div>
                 </form>
